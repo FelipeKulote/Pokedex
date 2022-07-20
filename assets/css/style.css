@@ -8,8 +8,16 @@
 }
 
 header{
+    background-color: red;
     justify-content: center;
+    /* align-items: center; */
     text-align: center;
+    width: 100%;
+    height: 5rem;
+}
+
+h1{
+    align-items: center;
 }
 
 #pokemon-list{
@@ -28,7 +36,7 @@ header{
     align-items: center;
     text-align: center;
     border-radius: 10px;
-    width: 400px;
+    width: 430px;
     height: 250px;
     z-index: 0;
     gap: 2rem;
@@ -36,18 +44,12 @@ header{
     /* width: 50%; */
 }
 
-.pokemon{
+.img-pokemon{
     background-color: white;
     border-radius: 100%;
-    
+    width: 50%;
 }
 
-span{
-    background-color: white;
-    width: 200px;
-    height: 200px;
-    /* left: 0; */
-    border-radius: 100%;
-    position: absolute;
-    z-index: 1;
+.number-pokemon{
+    
 }
