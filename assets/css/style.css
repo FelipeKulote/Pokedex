@@ -8,12 +8,12 @@
 }
 
 body{
-    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(255,223,229,1) 100%);
+    /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(255,223,229,1) 100%); */
 }
 
 header{
     display: flex;
-    background-color: red;
+    /* background-color: #f53409b0; */
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -50,14 +50,118 @@ h1{
     /* width: 50%; */
 }
 
+/* .card-bug{
+    background-color: #f8d5a3;
+} */
+
 .img-pokemon{
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.19);
     border-radius: 100%;
     width: 50%;
+    margin-left: 1vw;
+}
+
+.name-pokemon{
+    text-transform: uppercase;
 }
 
 .number-pokemon{
     
 }
 
+.desc-pokemon{
+    
+}
+
+#modalOverlay{
+    background-color: #00000070;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+#modal{
+    background-color: #605f5fe4;
+    width: 100%;
+    max-width: 60vw;
+    height: auto;
+    min-height: 70vh;
+    border-radius: 10px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+}
+
+#modal span#modalClose{
+    padding: .5vw;
+    color: white;
+    position: absolute;
+    top: .2vw;
+    right: .2vw;
+    background-color: #a8a8a8;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .3 ease-in-out;
+}
+
+#modal span#modalClose:hover{
+    background-color: rgba(206, 24, 24, 0.632);
+}
+
+#modal img{
+    /* background-color: white; */
+    width: 50%;
+    height: 50%;
+}
+
+#modal div{
+    padding: 1vw;
+    
+}
+
+#modalText{
+    text-align: center;
+}
+
+#modalName{
+    padding-bottom: 3vw;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+#modalTypes{
+    display: flex;
+    padding: 1vw;
+    /* background-color: black; */
+    color: white;
+    gap: 2vw;
+}
+
+#modalType1, #modalType2{
+    background-color: black;
+    border-radius: 5px;
+    padding: .5vw;
+}
+
+button#more{
+    display: flex;
+    margin: 2vw auto;
+    padding: 1vw;
+    border-radius: 10px;
+    /* align-items: center; */
+    /* justify-content: center; */
+    text-transform: uppercase;
+    font-size: 2vw;
+    font-weight: 500;
+}
 
