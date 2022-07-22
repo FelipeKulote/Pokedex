@@ -33,6 +33,7 @@ h1{
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 3rem 0;
+    gap: 1vw;
 }
 
 .card{
@@ -45,7 +46,7 @@ h1{
     width: 30vw;
     height: 8vw;
     z-index: 0;
-    gap: 2rem;
+    gap: 2vw;
     margin: 5px 0;
     transition: .2s;
 }
@@ -178,3 +179,6 @@ button#more:hover{
     background-color: black;
 }
 
+
+
+/* @media (max-width: 768px) */
