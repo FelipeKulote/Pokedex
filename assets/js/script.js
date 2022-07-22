@@ -5,47 +5,29 @@ const modalTypes2 = document.querySelector("#modalType2");
 const modalDescription = document.querySelector("#modalDescription");
 
 let page1 = 0;
-let page2 = 20;
+// let page2 = 20;
 
 const getPokemon = async (pokemon) => {
   const resposta = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?offset=${page1}&limit=${page2}",`
+    `https://pokeapi.co/api/v2/pokemon?offset=${page1}&limit=20",`
   );
   const data = await resposta.json();
-  // console.log(data);
-
   data.results.forEach(async (item) => {
-    // console.log(item);
     const itemUrl = await fetch(item.url);
     const data2 = await itemUrl.json();
-    // console.log(data2);
+
+    const especies = await fetch(data2.species.url);
+    const data3 = await especies.json();
+
+    const evolution = await fetch(data3.evolution_chain.url);
+    const data4 = await evolution.json();
+
     let type2 = "";
     try {
       type2 = data2.types[1].type.name;
     } catch (a) {
       type2 = "";
     }
-
-    const especies = await fetch(data2.species.url);
-    const data3 = await especies.json();
-    // console.log(data3);
-
-    const evolution = await fetch(data3.evolution_chain.url);
-    const data4 = await evolution.json();
-    // console.log(data4);
-
-    let descricao = "";
-    for (let i = 0; i < 500; i++) {
-      if (data3.flavor_text_entries[i].language.name == "en") {
-        descricao = data3.flavor_text_entries[i].flavor_text;
-        break;
-      }
-    }
-    descricao = descricao
-      .replace("", "")
-      .replace("POKéMON", "Pokemon")
-      .replace("POKéMON", "Pokemon")
-      .replace("POKéMON", "Pokemon");
 
     function pokemontype(tipo) {
       if (tipo.toLowerCase() == "bug") {
@@ -55,7 +37,7 @@ const getPokemon = async (pokemon) => {
       } else if (tipo.toLowerCase() == "fairy") {
         return `<div class="card" style="background-color: #FCEAFF">`;
       } else if (tipo.toLowerCase() == "fire") {
-        return `<div class="card" style="background-color: #f53409b0">`;
+        return `<div class="card" style="background-color: #f53409">`;
       } else if (tipo.toLowerCase() == "ghost") {
         return `<div class="card" style="background-color: #B9C2C4">`;
       } else if (tipo.toLowerCase() == "ground") {
@@ -67,9 +49,9 @@ const getPokemon = async (pokemon) => {
       } else if (tipo.toLowerCase() == "steel") {
         return `<div class="card" style="background-color: #F4F4F4">`;
       } else if (tipo.toLowerCase() == "dark") {
-        return `<div class="card" style="background-color: #15041597">`;
+        return `<div class="card" style="background-color: #2f082f">`;
       } else if (tipo.toLowerCase() == "electric") {
-        return `<div class="card" style="background-color: #ffff00b6">`;
+        return `<div class="card" style="background-color: #ffff00">`;
       } else if (tipo.toLowerCase() == "fighting") {
         return `<div class="card" style="background-color: #E6E0D4">`;
       } else if (tipo.toLowerCase() == "flying") {
@@ -83,7 +65,7 @@ const getPokemon = async (pokemon) => {
       } else if (tipo.toLowerCase() == "rock") {
         return `<div class="card" style="background-color: #D5D5D4">`;
       } else if (tipo.toLowerCase() == "water") {
-        return `<div class="card" style="background-color: #0a65efa9">`;
+        return `<div class="card" style="background-color: #0a65ef">`;
       }
     }
     const type1 = data2.types[0].type.name;
@@ -96,11 +78,8 @@ const getPokemon = async (pokemon) => {
           data2.id
         }.png" alt="" />
         <div>
-            <p class="number-pokemon">${data2.id}</p>
+            <span class="number-pokemon">${data2.id}</span>
             <h2 class="name-pokemon">${data2.name}</h2>
-            <p class="type-pokemon">${type1}</p>
-            <p class="type-pokemon">${type2}</p> 
-            <h4 class="desc-pokemon">${descricao}</h4>
         </div>
       </div>
       `
@@ -126,19 +105,47 @@ const getPokemon = async (pokemon) => {
       modalName.innerText = dados.name;
       modalTypes1.innerText = dados.types[0].type.name;
       modalTypes2.innerText = dados.types[1].type.name;
-    })
+
+      if(modalTypes2==""){
+        modalTypes2.style.display = 'none';
+      }
+      // modalDescription.innerText = ;
+      
+      const resp2 = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${idCard}`);
+      const dados2 = await resp2.json();
+      // console.log(dados2)
+        let descricao = "";
+        for (let i = 0; i < 2000; i++) {
+          if (dados2.flavor_text_entries[i].language.name == "en") {
+            descricao = dados2.flavor_text_entries[i].flavor_text;
+            // break;
+          }
+        
+        descricao = descricao
+          .replace("", "")
+          .replace("POKéMON", "Pokemon")
+          .replace("POKéMON", "Pokemon")
+          .replace("POKéMON", "Pokemon");
+
+        modalDescription.innerText = descricao;
+        }
+
+
+    });
+  });
+
+  window.addEventListener("click", function (event){
+    if(!event.target.classList.contains("modal-item")){
+      modal.style.display = "none";
+    }
   })
 };
 getPokemon();
 
-// [0].children[1].children[0].innerHTML
-
-// ?offset=${page1}&limit=${page2}
-// function viewMore(){
-//   page1+=20;
-//   page2+=20;
-//   getPokemon();
-// }
+function viewMore(){
+  page1+=20;
+  getPokemon();
+}
 
 // window.addEventListener("scroll", function(){
 //   const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
@@ -171,3 +178,9 @@ const renderPokemon = async (pokemon) => {
     // pokemonType.innerHTML = data.type;
 }
 */
+
+
+
+// <p class="type-pokemon">${type1}</p>
+// <p class="type-pokemon">${type2}</p> 
+// <h4 class="desc-pokemon">${descricao}</h4>
