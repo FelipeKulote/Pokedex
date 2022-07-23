@@ -17,8 +17,7 @@ header{
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 10rem;
-    /* margin: auto; */
+    height: 15vw;
 }
 
 h1{
@@ -27,7 +26,7 @@ h1{
 }
 
 #pokemon-list{
-    max-width: 90%;
+    max-width: 95%;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
@@ -96,9 +95,9 @@ h1{
 #modal{
     background-color: #605f5fe4;
     width: 100%;
-    max-width: 60vw;
+    max-width: 70vw;
     height: auto;
-    min-height: 70vh;
+    min-height: 50vh;
     border-radius: 10px;
     display: flex;
     overflow: hidden;
@@ -128,6 +127,7 @@ h1{
     /* background-color: white; */
     width: 50%;
     height: 50%;
+    margin-left: 1vw;
 }
 
 #modal div{
@@ -137,9 +137,11 @@ h1{
 
 #modalText{
     text-align: center;
+    margin-right: 1vw;
 }
 
 #modalName{
+    font-size: 2.3vw;
     padding-bottom: 3vw;
     font-weight: 600;
     text-transform: uppercase;
@@ -148,16 +150,27 @@ h1{
 #modalTypes{
     display: flex;
     padding: 1vw;
-    /* background-color: black; */
     color: white;
     gap: 2vw;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 #modalType1, #modalType2{
+    text-transform: uppercase;
     background-color: black;
     border-radius: 5px;
+    padding: 1vw;
+}
+
+#modalDescription{
+    background-color: rgba(243, 236, 236, 0.459);
+    margin-top: 1vw;
     padding: .5vw;
+    border: solid 3px;
+    border-radius: 10px;
 }
 
 button#more{
@@ -181,4 +194,55 @@ button#more:hover{
 
 
 
-/* @media (max-width: 768px) */
+@media (max-width: 768px){
+    #modal{
+        background-color: #605f5fe4;
+        width: 100%;
+        max-width: 60vw;
+        height: auto;
+        min-height: 50vh;
+        border-radius: 10px;
+        display: block;
+        overflow: hidden;
+        /* position: relative; */
+        justify-content: center;
+        align-items: center;
+        gap: 2vw;
+    }
+    
+    #modal img{
+        /* background-color: white; */
+        width: 100%;
+        height: 100%;
+        padding: 2vw;
+    }
+
+    #modalName{
+        font-size: 5vw;
+    }
+
+    /* #modalTypes{
+        display: flex;
+        padding: 1vw;
+        color: white;
+        gap: 2vw;
+        text-align: center;
+        align-items: center;
+    } */
+}
+
+
+
+@media (max-width: 480px){
+    .card{
+        width: 40vw;
+        height: 10vw;
+    }
+
+    .name-pokemon{
+        font-size: 2.2vw;
+    }
+    .number-pokemon{
+        font-size: 2.5vw;
+    }
+}
