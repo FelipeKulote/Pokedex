@@ -49,7 +49,7 @@ const getPokemon = async (pokemon) => {
       } else if (tipo.toLowerCase() == "steel") {
         return `<div class="card" style="background-color: #F4F4F4">`;
       } else if (tipo.toLowerCase() == "dark") {
-        return `<div class="card" style="background-color: #2f082f">`;
+        return `<div class="card" style="background-color: #4B3E64">`;
       } else if (tipo.toLowerCase() == "electric") {
         return `<div class="card" style="background-color: #ffff00">`;
       } else if (tipo.toLowerCase() == "fighting") {
