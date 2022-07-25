@@ -75,14 +75,6 @@ header img{
     font-size: 1.5vw;
 }
 
-.number-pokemon{
-    
-}
-
-.desc-pokemon{
-    
-}
-
 #modalOverlay{
     background-color: #00000070;
     width: 100vw;
@@ -129,7 +121,6 @@ header img{
 }
 
 #modal img{
-    /* background-color: white; */
     width: 50%;
     height: 50%;
     margin-left: 1vw;
@@ -183,8 +174,6 @@ button#more{
     margin: 1vw auto 2vw auto;
     padding: 1vw;
     border-radius: 10px;
-    /* align-items: center; */
-    /* justify-content: center; */
     text-transform: uppercase;
     font-size: 2vw;
     font-weight: 500;
@@ -203,22 +192,13 @@ button#more:hover{
 
 @media (max-width: 768px){
     #modal{
-        background-color: #605f5fe4;
-        width: 100%;
         max-width: 60vw;
         height: auto;
-        min-height: 50vh;
         border-radius: 10px;
         display: block;
-        overflow: hidden;
-        /* position: relative; */
-        justify-content: center;
-        align-items: center;
-        gap: 2vw;
     }
     
     #modal img{
-        /* background-color: white; */
         width: 100%;
         height: 100%;
         padding: 2vw;

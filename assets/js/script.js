@@ -5,7 +5,6 @@ const modalTypes2 = document.querySelector("#modalType2");
 const modalDescription = document.querySelector("#modalDescription");
 
 let page1 = 0;
-// let page2 = 20;
 
 const getPokemon = async (pokemon) => {
   const resposta = await fetch(
@@ -86,41 +85,41 @@ const getPokemon = async (pokemon) => {
     );
   });
 
-  const cards = document.querySelectorAll('#pokemon-list');
-  // console.log(cards);
-  
-  const modal = document.querySelector('#modalOverlay');
-  cards.forEach((card) =>{
-    card.addEventListener("click", async function(event){
-      // console.log(event);
+  const cards = document.querySelectorAll("#pokemon-list");
+
+  const modal = document.querySelector("#modalOverlay");
+  cards.forEach((card) => {
+    card.addEventListener("click", async function (event) {
       const cardElement = event.path.filter((item) => item.className == "card");
-      // console.log(cardElement);
+
       const idCard = cardElement[0].children[1].children[0].innerHTML;
-      // console.log(idCard);
-      const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${idCard}`)
+
+      const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${idCard}`);
       const dados = await resp.json();
       console.log(dados);
-      modal.style.display = 'flex'
-      modalImg.setAttribute("src", dados.sprites.other["official-artwork"].front_default);
+      modal.style.display = "flex";
+      modalImg.setAttribute(
+        "src",
+        dados.sprites.other["official-artwork"].front_default
+      );
       modalName.innerText = dados.name;
       modalTypes1.innerText = dados.types[0].type.name;
       modalTypes2.innerText = dados.types[1].type.name;
 
-      if(modalTypes2==""){
-        modalTypes2.style.display = 'none';
+      if (modalTypes2 == "") {
+        modalTypes2.style.display = "none";
       }
-      // modalDescription.innerText = ;
-      
-      const resp2 = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${idCard}`);
+
+      const resp2 = await fetch(
+        `https://pokeapi.co/api/v2/pokemon-species/${idCard}`
+      );
       const dados2 = await resp2.json();
-      // console.log(dados2)
-        let descricao = "";
-        for (let i = 0; i < 2000; i++) {
-          if (dados2.flavor_text_entries[i].language.name == "en") {
-            descricao = dados2.flavor_text_entries[i].flavor_text;
-            // break;
-          }
-        
+      let descricao = "";
+      for (let i = 0; i < 2000; i++) {
+        if (dados2.flavor_text_entries[i].language.name == "en") {
+          descricao = dados2.flavor_text_entries[i].flavor_text;
+        }
+
         descricao = descricao
           .replace("", "")
           .replace("POKéMON", "Pokémon")
@@ -128,22 +127,20 @@ const getPokemon = async (pokemon) => {
           .replace("POKéMON", "Pokémon");
 
         modalDescription.innerText = descricao;
-        }
-
-
+      }
     });
   });
 
-  window.addEventListener("click", function (event){
-    if(!event.target.classList.contains("modal-item")){
+  window.addEventListener("click", function (event) {
+    if (!event.target.classList.contains("modal-item")) {
       modal.style.display = "none";
     }
-  })
+  });
 };
 getPokemon();
 
-function viewMore(){
-  page1+=20;
+function viewMore() {
+  page1 += 20;
   getPokemon();
 }
 
@@ -153,34 +150,3 @@ function viewMore(){
 //     viewMore();
 //   }
 // })
-
-// return `<p class="type-pokemon" style="background-color: green; color: white">BUG</p>`
-{
-  /* <div class="card"></div> */
-}
-
-// ${tipospokemons(tipo2)}
-// ${tipospokemons(tipo)}
-
-/* 2º jeito 
-const pokemonName = document.querySelector('.name-pokemon')
-const pokemonID = document.querySelector('.number-pokemon')
-const pokemonType = document.querySelector('.type-pokemon')
-const pokemonImg = document.querySelector('.img-pokemon')
-
-
-const renderPokemon = async (pokemon) => {
-    const data = await getPokemon(pokemon);
-
-    pokemonName.innerHTML = data.name;
-    pokemonID.innerHTML = data.id;
-    pokemonImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`;
-    // pokemonType.innerHTML = data.type;
-}
-*/
-
-
-
-// <p class="type-pokemon">${type1}</p>
-// <p class="type-pokemon">${type2}</p> 
-// <h4 class="desc-pokemon">${descricao}</h4>
