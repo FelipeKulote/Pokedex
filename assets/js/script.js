@@ -135,8 +135,8 @@ const getPokemon = async (pokemon) => {
 getPokemon();
 
 function viewMore() {
-  getPokemon(page);
   page += 20;
+  getPokemon(page);
 }
 
 // window.addEventListener("scroll", function(){
