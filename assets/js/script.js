@@ -14,14 +14,12 @@ const getPokemon = async (pokemon) => {
   data.results.forEach(async (item) => {
     const itemUrl = await fetch(item.url);
     const data2 = await itemUrl.json();
-
+// Para futuras melhorias..
     const especies = await fetch(data2.species.url);
     const data3 = await especies.json();
 
     const evolution = await fetch(data3.evolution_chain.url);
     const data4 = await evolution.json();
-
-   
 
     function pokemontype(tipo) {
       if (tipo.toLowerCase() == "bug") {
