@@ -8,18 +8,20 @@ let page = 0;
 
 const getPokemon = async (pokemon) => {
   const resposta = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?offset=${pokemon}&limit=20",`
+    `https://pokeapi.co/api/v2/pokemon?offset=${page}&limit=20",`
   );
   const data = await resposta.json();
   data.results.forEach(async (item) => {
     const itemUrl = await fetch(item.url);
     const data2 = await itemUrl.json();
-// Para futuras melhorias..
+// Para futuras melhorias 
     const especies = await fetch(data2.species.url);
     const data3 = await especies.json();
 
     const evolution = await fetch(data3.evolution_chain.url);
     const data4 = await evolution.json();
+
+   
 
     function pokemontype(tipo) {
       if (tipo.toLowerCase() == "bug") {
@@ -136,7 +138,7 @@ getPokemon();
 
 function viewMore() {
   page += 20;
-  getPokemon(page);
+  getPokemon();
 }
 
 // window.addEventListener("scroll", function(){
