@@ -8,12 +8,12 @@
 }
 
 body{
-    /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(255,223,229,1) 100%); */
+   background-color: #a8a8a8;
 }
 
 header{
     display: flex;
-    background-color: #2f082f;
+    background-color: #a20e0e;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -21,8 +21,13 @@ header{
 }
 
 h1{
+    display: none;
     font-size: 6vw;
     text-align: right;
+}
+
+header img{
+    width: 50vw;
 }
 
 #pokemon-list{
@@ -175,7 +180,7 @@ h1{
 
 button#more{
     display: flex;
-    margin: 6vw auto 2vw auto;
+    margin: 1vw auto 2vw auto;
     padding: 1vw;
     border-radius: 10px;
     /* align-items: center; */
@@ -192,6 +197,8 @@ button#more:hover{
     background-color: black;
 }
 
+
+/* ###########  APLICANDO RESPONSIVIDADE ########### */
 
 
 @media (max-width: 768px){
@@ -221,14 +228,6 @@ button#more:hover{
         font-size: 5vw;
     }
 
-    /* #modalTypes{
-        display: flex;
-        padding: 1vw;
-        color: white;
-        gap: 2vw;
-        text-align: center;
-        align-items: center;
-    } */
 }
 
 

@@ -123,9 +123,9 @@ const getPokemon = async (pokemon) => {
         
         descricao = descricao
           .replace("", "")
-          .replace("POKéMON", "Pokemon")
-          .replace("POKéMON", "Pokemon")
-          .replace("POKéMON", "Pokemon");
+          .replace("POKéMON", "Pokémon")
+          .replace("POKéMON", "Pokémon")
+          .replace("POKéMON", "Pokémon");
 
         modalDescription.innerText = descricao;
         }
