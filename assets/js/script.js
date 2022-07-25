@@ -4,11 +4,11 @@ const modalTypes1 = document.querySelector("#modalType1");
 const modalTypes2 = document.querySelector("#modalType2");
 const modalDescription = document.querySelector("#modalDescription");
 
-let page1 = 0;
+let page = 0;
 
 const getPokemon = async (pokemon) => {
   const resposta = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?offset=${page1}&limit=20",`
+    `https://pokeapi.co/api/v2/pokemon?offset=${pokemon}&limit=20",`
   );
   const data = await resposta.json();
   data.results.forEach(async (item) => {
@@ -21,12 +21,7 @@ const getPokemon = async (pokemon) => {
     const evolution = await fetch(data3.evolution_chain.url);
     const data4 = await evolution.json();
 
-    let type2 = "";
-    try {
-      type2 = data2.types[1].type.name;
-    } catch (a) {
-      type2 = "";
-    }
+   
 
     function pokemontype(tipo) {
       if (tipo.toLowerCase() == "bug") {
@@ -96,7 +91,13 @@ const getPokemon = async (pokemon) => {
 
       const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${idCard}`);
       const dados = await resp.json();
-      console.log(dados);
+      let types2 = "";
+      try {
+        types2 = dados.types[1].type.name;
+      } catch (a) {
+          types2 = "None";
+      }
+
       modal.style.display = "flex";
       modalImg.setAttribute(
         "src",
@@ -104,11 +105,7 @@ const getPokemon = async (pokemon) => {
       );
       modalName.innerText = dados.name;
       modalTypes1.innerText = dados.types[0].type.name;
-      modalTypes2.innerText = dados.types[1].type.name;
-
-      if (modalTypes2 == "") {
-        modalTypes2.style.display = "none";
-      }
+      modalTypes2.innerText = types2;
 
       const resp2 = await fetch(
         `https://pokeapi.co/api/v2/pokemon-species/${idCard}`
@@ -140,8 +137,8 @@ const getPokemon = async (pokemon) => {
 getPokemon();
 
 function viewMore() {
-  page1 += 20;
-  getPokemon();
+  getPokemon(page);
+  page += 20;
 }
 
 // window.addEventListener("scroll", function(){

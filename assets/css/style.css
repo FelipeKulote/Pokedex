@@ -186,6 +186,14 @@ button#more:hover{
     background-color: black;
 }
 
+footer{
+    width: 100%;
+    background-color: #a20e0e;
+    font-weight: 600;
+    font-size: 1.3vw;
+    color: #E8E8E8;
+    padding: 0 0 0 .5vw;
+}
 
 /* ###########  APLICANDO RESPONSIVIDADE ########### */
 
